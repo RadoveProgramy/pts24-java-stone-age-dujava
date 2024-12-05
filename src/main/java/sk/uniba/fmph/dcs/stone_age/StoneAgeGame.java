@@ -44,7 +44,8 @@ public final class StoneAgeGame implements InterfaceStoneAgeGame {
     public boolean makeAction(final int playerId, final Location location, final Effect[] usedResources,
             final Effect[] desiredResources) {
         if (players.containsKey(playerId)) {
-            boolean ret = gamePhaseController.makeAction(players.get(playerId), location, usedResources, desiredResources);
+            boolean ret = gamePhaseController.makeAction(players.get(playerId), location, usedResources,
+                    desiredResources);
             notifyObserver();
             return ret;
         }
