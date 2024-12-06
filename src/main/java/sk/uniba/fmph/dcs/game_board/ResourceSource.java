@@ -5,7 +5,7 @@ import sk.uniba.fmph.dcs.stone_age.Effect;
 import sk.uniba.fmph.dcs.stone_age.HasAction;
 import sk.uniba.fmph.dcs.stone_age.PlayerOrder;
 
-public class ResourceSource implements InterFaceFigureLocationInternal{
+public class ResourceSource implements InterFaceFigureLocationInternal {
 
     private String name;
     private Effect resource;
@@ -13,9 +13,8 @@ public class ResourceSource implements InterFaceFigureLocationInternal{
     private int maxfiguresPerPlayer;
     private PlayerOrder[] figures;
 
-
-    public ResourceSource(final String name, final Effect resource, final int maxFigures,
-                          final int maxFigureColour, final PlayerOrder[] figures){
+    public ResourceSource(final String name, final Effect resource, final int maxFigures, final int maxFigureColour,
+            final PlayerOrder[] figures) {
         this.name = name;
         this.resource = resource;
         this.maxFigures = maxFigures;
@@ -23,9 +22,7 @@ public class ResourceSource implements InterFaceFigureLocationInternal{
         this.figures = figures;
     }
 
-
-
-    public String state(){
+    public String state() {
         return null;
     }
 
@@ -36,26 +33,25 @@ public class ResourceSource implements InterFaceFigureLocationInternal{
 
     /**
      *
-     * @param player - current player
-     * @return - false if player want to put more figures than possible or player hasn't
-     *      number of figures
+     * @param player
+     *            - current player
+     *
+     * @return - false if player want to put more figures than possible or player hasn't number of figures
      */
 
     @Override
     public HasAction tryToPlaceFigures(Player player, int count) {
-        if ((figures.length+count > maxFigures) || (player.playerBoard().hasFigures(count))) {
+        if ((figures.length + count > maxFigures) || (player.playerBoard().hasFigures(count))) {
             return HasAction.NO_ACTION_POSSIBLE;
-        }
-        else {
+        } else {
             for (int i = 0; i < figures.length; i++) {
-                if(figures[i] == player.playerOrder()){
-                    return  HasAction.WAITING_FOR_PLAYER_ACTION;
+                if (figures[i] == player.playerOrder()) {
+                    return HasAction.WAITING_FOR_PLAYER_ACTION;
                 }
             }
-            if( figures.length >= maxfiguresPerPlayer) {
+            if (figures.length >= maxfiguresPerPlayer) {
                 return HasAction.NO_ACTION_POSSIBLE;
-            }
-            else {
+            } else {
                 return HasAction.WAITING_FOR_PLAYER_ACTION;
             }
         }

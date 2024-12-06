@@ -18,7 +18,7 @@ public class ResourceSourceTest {
     private Player player2;
 
     @BeforeEach
-    public void setUp(){
+    public void setUp() {
         InterfacePlayerBoardGameBoard iFaceFalse = new InterfacePlayerBoardGameBoard() {
             @Override
             public void giveEffect(Effect[] stuff) {
@@ -103,17 +103,16 @@ public class ResourceSourceTest {
         };
         this.player1 = new Player(playerOrder1, iFaceFalse);
         this.player2 = new Player(playerOrder2, iFaceTrue);
-        this.playerOrder1 = new PlayerOrder(0,2);
-        this.playerOrder2 = new PlayerOrder(1,2);
+        this.playerOrder1 = new PlayerOrder(0, 2);
+        this.playerOrder2 = new PlayerOrder(1, 2);
         this.playerOrders = new PlayerOrder[2];
         this.playerOrders[0] = this.playerOrder1;
         this.playerOrders[1] = this.playerOrder2;
         this.resourceSource = new ResourceSource("aaa", Effect.WOOD, 7, 4, this.playerOrders);
     }
 
-
     @Test
-    public void tryToPlaceFiguresTest(){
+    public void tryToPlaceFiguresTest() {
         assertEquals(this.resourceSource.tryToPlaceFigures(player1, 10), HasAction.NO_ACTION_POSSIBLE);
         assertEquals(this.resourceSource.tryToPlaceFigures(player1, 0), HasAction.WAITING_FOR_PLAYER_ACTION);
         assertEquals(this.resourceSource.tryToPlaceFigures(player2, 2), HasAction.WAITING_FOR_PLAYER_ACTION);
