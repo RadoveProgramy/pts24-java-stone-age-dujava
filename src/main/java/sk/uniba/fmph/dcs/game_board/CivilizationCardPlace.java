@@ -1,6 +1,12 @@
 package sk.uniba.fmph.dcs.game_board;
 
-import sk.uniba.fmph.dcs.stone_age.*;
+
+
+import sk.uniba.fmph.dcs.stone_age.ActionResult;
+import sk.uniba.fmph.dcs.stone_age.CivilisationCard;
+import sk.uniba.fmph.dcs.stone_age.HasAction;
+import sk.uniba.fmph.dcs.stone_age.PlayerOrder;
+import sk.uniba.fmph.dcs.stone_age.Effect;
 
 import java.util.Optional;
 
@@ -13,7 +19,7 @@ public class CivilizationCardPlace implements InterFaceFigureLocationInternal {
     private RewardMenu rewardMenu;
 
     public CivilizationCardPlace(final int requiredResources, final PlayerOrder[] playerOrder,
-                                 CivilizationCardDeck civilizationCardDeck, RewardMenu rewardMenu) {
+            CivilizationCardDeck civilizationCardDeck, RewardMenu rewardMenu) {
         this.requiredResources = requiredResources;
         this.figures = playerOrder;
         this.civilizationCardDeck = civilizationCardDeck;
@@ -32,7 +38,7 @@ public class CivilizationCardPlace implements InterFaceFigureLocationInternal {
 
     @Override
     public boolean placeFigures(Player player, int figureCount) {
-        if(tryToPlaceFigures(player, figureCount) != HasAction.NO_ACTION_POSSIBLE){
+        if (tryToPlaceFigures(player, figureCount) != HasAction.NO_ACTION_POSSIBLE) {
             int length = figures.length;
             figures[length] = player.playerOrder();
             player.playerBoard().takeFigures(1);
@@ -42,7 +48,7 @@ public class CivilizationCardPlace implements InterFaceFigureLocationInternal {
 
     @Override
     public HasAction tryToPlaceFigures(Player player, int count) {
-        if(figures.length > 0 || count != 1 || !player.playerBoard().hasFigures(count)){
+        if (figures.length > 0 || count != 1 || !player.playerBoard().hasFigures(count)) {
             return HasAction.NO_ACTION_POSSIBLE;
         }
         return HasAction.WAITING_FOR_PLAYER_ACTION;
@@ -50,13 +56,13 @@ public class CivilizationCardPlace implements InterFaceFigureLocationInternal {
 
     @Override
     public ActionResult makeAction(Player player, Effect[] inputResources, Effect[] outputResources) {
-
+        return null;
     }
 
     @Override
     public boolean skipAction(Player player) {
         for (int i = 0; i < figures.length; i++) {
-            if(figures[i] == player.playerOrder()){
+            if (figures[i] == player.playerOrder()) {
                 figures[i] = null;
                 player.playerBoard().takeFigures(-1);
                 return true;
@@ -68,9 +74,9 @@ public class CivilizationCardPlace implements InterFaceFigureLocationInternal {
 
     @Override
     public HasAction tryToMakeAction(Player player) {
-        if(this.civilisationCard != null){
+        if (this.civilisationCard != null) {
             for (int i = 0; i < figures.length; i++) {
-                if(figures[i] == player.playerOrder()){
+                if (figures[i] == player.playerOrder()) {
                     return HasAction.NO_ACTION_POSSIBLE;
                 }
             }
