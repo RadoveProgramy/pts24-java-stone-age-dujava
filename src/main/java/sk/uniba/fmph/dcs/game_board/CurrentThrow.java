@@ -22,11 +22,13 @@ public class CurrentThrow implements InterfaceToolUse {
     private int clayMound = 4;
     private int quarry = 5;
     private int river = 6;
+    private Throw t;
 
     public CurrentThrow(final int throwResult) {
         // this.throwsFor = throwsFor;
         this.throwResult = 0;
-        int[] diceThrows = Arrays.stream(Throw.throwDice(throwResult)).toArray();
+        this.t = new Throw();
+        int[] diceThrows = Arrays.stream(t.throwDice(throwResult)).toArray();
         for (int i = 0; i < diceThrows.length; i++) {
             this.throwResult += diceThrows[i];
         }
@@ -47,7 +49,7 @@ public class CurrentThrow implements InterfaceToolUse {
         this.player = player;
         this.usedTools = new ArrayList<>();
         int sumOfThrows = 0;
-        int[] diceThrows = Arrays.stream(Throw.throwDice(dices)).toArray();
+        int[] diceThrows = Arrays.stream(this.t.throwDice(dices)).toArray();
         for (int i = 0; i < diceThrows.length; i++) {
             sumOfThrows += diceThrows[i];
         }
