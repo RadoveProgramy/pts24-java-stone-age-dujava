@@ -15,10 +15,10 @@ public class CivilizationCardPlace implements InterFaceFigureLocationInternal {
     private RewardMenu rewardMenu;
     private CurrentThrow currentThrow;
 
-    public CivilizationCardPlace(final int requiredResources, final PlayerOrder[] playerOrder,
+    public CivilizationCardPlace(final int requiredResources,
             CivilizationCardDeck civilizationCardDeck, RewardMenu rewardMenu, CurrentThrow currentThrow) {
         this.requiredResources = requiredResources;
-        this.figures = Arrays.asList(playerOrder);
+        //this.figures = Arrays.asList(playerOrder);
         this.civilizationCardDeck = civilizationCardDeck;
         this.civilisationCard = civilizationCardDeck.getTop();
         this.rewardMenu = rewardMenu;

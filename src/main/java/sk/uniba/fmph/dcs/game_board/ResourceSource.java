@@ -40,7 +40,8 @@ public class ResourceSource implements InterFaceFigureLocationInternal {
             if (!this.figuresCounts.containsKey(player.playerOrder())) {
                 this.figuresCounts.put(player.playerOrder(), figureCount);
             } else {
-                this.figuresCounts.put(player.playerOrder(), this.figuresCounts.get(player.playerOrder()) + figureCount);
+                this.figuresCounts.put(player.playerOrder(),
+                        this.figuresCounts.get(player.playerOrder()) + figureCount);
             }
             player.playerBoard().takeFigures(figureCount);
             return true;
@@ -74,14 +75,14 @@ public class ResourceSource implements InterFaceFigureLocationInternal {
     }
 
     @Override
-    public ActionResult makeAction(final Player player, final Effect[] inputResources, final Effect[] outputResources ) {
+    public ActionResult makeAction(final Player player, final Effect[] inputResources, final Effect[] outputResources) {
         return null;
     }
 
     @Override
     public boolean skipAction(Player player) {
         for (int i = 0; i < this.figures.length; i++) {
-            if(this.figures[i] == player.playerOrder()){
+            if (this.figures[i] == player.playerOrder()) {
                 return false;
             }
         }
@@ -93,7 +94,7 @@ public class ResourceSource implements InterFaceFigureLocationInternal {
     @Override
     public HasAction tryToMakeAction(Player player) {
         for (int i = 0; i < this.figures.length; i++) {
-            if(this.figures[i] == player.playerOrder()){
+            if (this.figures[i] == player.playerOrder()) {
                 return HasAction.NO_ACTION_POSSIBLE;
             }
         }

@@ -65,7 +65,7 @@ public class GetSomethingThrowTest {
         player = new Player(new PlayerOrder(0, 0), iFace);
         resource = Effect.WOOD;
         choice = Effect.WOOD;
-        currentThrow = new CurrentThrow(Effect.WOOD, 2);
+        currentThrow = new CurrentThrow(2);
         getSomethingThrow = new GetSomethingThrow(resource, currentThrow);
     }
 

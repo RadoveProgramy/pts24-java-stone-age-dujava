@@ -23,8 +23,8 @@ public class CurrentThrow implements InterfaceToolUse {
     private int quarry = 5;
     private int river = 6;
 
-    public CurrentThrow(final Effect throwsFor, final int throwResult) {
-        this.throwsFor = throwsFor;
+    public CurrentThrow(final int throwResult) {
+        // this.throwsFor = throwsFor;
         this.throwResult = 0;
         int[] diceThrows = Arrays.stream(Throw.throwDice(throwResult)).toArray();
         for (int i = 0; i < diceThrows.length; i++) {
@@ -88,13 +88,13 @@ public class CurrentThrow implements InterfaceToolUse {
         return null;
     }
 
-    public int getThrowResult(){
+    public int getThrowResult() {
         return this.throwResult;
     }
 
     /**
      *
-     * @param idx
+     * @param idx - value of tool
      *
      * @return
      */

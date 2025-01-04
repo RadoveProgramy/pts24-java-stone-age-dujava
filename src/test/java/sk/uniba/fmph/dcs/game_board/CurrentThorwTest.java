@@ -56,34 +56,33 @@ public class CurrentThorwTest {
     };
 
     @Test
-    public void initiateWoodTest(){
+    public void initiateWoodTest() {
 
-        Player player = new Player(new PlayerOrder(1,1), iFace);
-        CurrentThrow currentThrow = new CurrentThrow(Effect.WOOD, 2);
+        Player player = new Player(new PlayerOrder(1, 1), iFace);
+        CurrentThrow currentThrow = new CurrentThrow(2);
 
         currentThrow.initiate(player, Effect.WOOD, 2);
 
         assertEquals(true, currentThrow.finishUsingTools());
-        assertNotNull(currentThrow.getThrowResult());   //getThrowResult returns the final value of throw
+        assertNotNull(currentThrow.getThrowResult()); // getThrowResult returns the final value of throw
     }
 
-
     @Test
-    public void initialClayTest(){
-        Player player = new Player(new PlayerOrder( 1, 1), iFace);
-        CurrentThrow currentThrow = new CurrentThrow(Effect.CLAY, 0);
+    public void initialClayTest() {
+        Player player = new Player(new PlayerOrder(1, 1), iFace);
+        CurrentThrow currentThrow = new CurrentThrow(0);
 
         currentThrow.initiate(player, Effect.CLAY, 4);
         assertTrue(currentThrow.canUseTools());
         currentThrow.useTool(3);
-        assertNotEquals( 2, currentThrow.getThrowResult());
+        assertNotEquals(2, currentThrow.getThrowResult());
     }
 
     @Test
-    public void wrongResource(){
+    public void wrongResource() {
         Effect effect = Effect.ONE_TIME_TOOL3;
-        Player player = new Player(new PlayerOrder(0,0),iFace);
-        CurrentThrow ct = new CurrentThrow(effect, 2);
+        Player player = new Player(new PlayerOrder(0, 0), iFace);
+        CurrentThrow ct = new CurrentThrow(2);
 
         assertFalse(ct.canUseTools());
     }
